@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 @source "./routes/*.{html,js,svelte}";
 @source "./routes/**/*.{html,js,svelte}";
+@source "./src/**/*.{html,js,svelte}";
+@source "./src/lib/component/**/*.{html,js,svelte}";
 @plugin "daisyui";
 
 @plugin "daisyui/theme" {
