@@ -143,7 +143,7 @@ export function smoothElevationData(trackPoints: TrackPoint[], windowSize: numbe
 // Calculate total elevation changes with minimum threshold
 export function calculateTotalElevationChanges(
     trackPoints: TrackPoint[], 
-    minElevationDiff: number = 1.0
+    minElevationDiff: number = 3.0
 ): { total_gain: number; total_loss: number } {
     let totalGain = 0;
     let totalLoss = 0;
@@ -201,7 +201,7 @@ export function calculateTotalElevationChanges(
 export function calculateElevationGainForSegments(
     trackPoints: TrackPoint[], 
     segmentDistanceMeters: number = 1000, 
-    minElevationDiff: number = 1.0,
+    minElevationDiff: number = 3.0,
     useSmoothing: boolean = true
 ): ElevationAnalysisResult {
     if (!trackPoints || trackPoints.length < 2) {
@@ -220,7 +220,7 @@ export function calculateElevationGainForSegments(
     }
 
     // Apply smoothing to reduce noise in elevation data if requested
-    const pointsToUse = useSmoothing ? smoothElevationData(trackPoints) : trackPoints;
+    const pointsToUse = useSmoothing ? smoothElevationData(trackPoints, 10) : trackPoints;
 
     // Calculate total elevation changes directly from all track points
     const elevationChanges = calculateTotalElevationChanges(pointsToUse, minElevationDiff);
