@@ -1,5 +1,5 @@
 <script>
-  import { analyzeGpxElevation } from '$lib/calculatorUtils';
+  import { analyzeGpxElevation } from '$lib/gpxUtils';
   
   let uploadedFile = null;
   let loading = false;
